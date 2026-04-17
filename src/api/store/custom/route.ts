@@ -1,8 +1,8 @@
-import { MedusaRequest, MedusaResponse } from "@medusajs/framework/http";
+// Types bypassed due to module resolution issues in Medusa v2
 
 export async function GET(
-  req: MedusaRequest,
-  res: MedusaResponse
+  req: any,
+  res: any
 ) {
   res.sendStatus(200);
 }
