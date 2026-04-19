@@ -14,7 +14,7 @@
   ],
   "scripts": {
     "build": "medusa build",
-    "build:admin": "MEDUSA_ADMIN_BACKEND_URL=$MEDUSA_ADMIN_BACKEND_URL medusa build --admin-only --deployment",
+    "build:admin": "MEDUSA_ADMIN_BACKEND_URL=$MEDUSA_ADMIN_BACKEND_URL medusa build --admin-only",
     "seed": "medusa exec ./src/scripts/seed.ts",
     "start": "medusa start",
     "dev": "medusa develop",
