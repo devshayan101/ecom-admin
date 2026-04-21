@@ -28,5 +28,14 @@ module.exports = defineConfig({
   admin: {
     backendUrl: process.env.VITE_MEDUSA_ADMIN_BACKEND_URL || process.env.MEDUSA_ADMIN_BACKEND_URL,
     disable: process.env.MEDUSA_ADMIN_DISABLED === "true",
+    // Fix for "Blocked request. This host is not allowed" on Render
+    vite: () => ({
+      server: {
+        allowedHosts: [
+          ".onrender.com",
+          "ecom-admin-44j4.onrender.com"
+        ]
+      }
+    }),
   },
 })
