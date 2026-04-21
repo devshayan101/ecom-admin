@@ -1,8 +1,11 @@
 const { loadEnv, defineConfig } = require('@medusajs/framework/utils')
 
 loadEnv(process.env.NODE_ENV || 'development', process.cwd())
-console.log(`[Admin Build] Backend URL is: ${process.env.MEDUSA_ADMIN_BACKEND_URL}`)
-console.log(`[Admin Build] Vite Backend URL is: ${process.env.VITE_MEDUSA_ADMIN_BACKEND_URL}`)
+
+// Ensure Vite sees the backend URL if only the non-VITE version is provided
+if (process.env.MEDUSA_ADMIN_BACKEND_URL && !process.env.VITE_MEDUSA_ADMIN_BACKEND_URL) {
+  process.env.VITE_MEDUSA_ADMIN_BACKEND_URL = process.env.MEDUSA_ADMIN_BACKEND_URL
+}
 
 module.exports = defineConfig({
   projectConfig: {
@@ -23,7 +26,7 @@ module.exports = defineConfig({
     },
   },
   admin: {
-    backendUrl: process.env.MEDUSA_ADMIN_BACKEND_URL,
+    backendUrl: process.env.VITE_MEDUSA_ADMIN_BACKEND_URL || process.env.MEDUSA_ADMIN_BACKEND_URL,
     disable: process.env.MEDUSA_ADMIN_DISABLED === "true",
   },
 })

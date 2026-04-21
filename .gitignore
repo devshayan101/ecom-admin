@@ -23,7 +23,11 @@ build
 !.yarn/sdks
 !.yarn/versions
 
+# Medusa build output
 .medusa
+!.medusa/server
+!.medusa/admin
+!.medusa/types
 
 # opensrc - source code for packages
 opensrc/
